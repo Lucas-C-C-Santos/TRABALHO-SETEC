@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SETEC 2025 - Evento Escolar sobre Inteligência Artificial</title>
     <link rel="stylesheet" href="style.css">
-  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <img src="logo.png" height="20%" width="5%"  alt="logo barbosa">
+            <img src="logo.png" height="20%" width="5%" alt="logo barbosa">
             <div class="nav-logo">SETEC 2025</div>
             <ul class="nav-menu">
                 <li><a href="#home">Início</a></li>
@@ -453,6 +455,14 @@
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
         });
 
         // Schedule tabs
