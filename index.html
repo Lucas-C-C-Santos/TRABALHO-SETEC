@@ -208,7 +208,6 @@
         </div>
     </section>
 
-
     <!-- Registration Section -->
     <section id="registration" class="registration">
         <div class="container">
@@ -217,37 +216,204 @@
                 <div class="registration-info">
                     <h3>Garanta sua vaga!</h3>
                     <p>Não perca a oportunidade de participar do maior evento escolar sobre Inteligência Artificial do ano.</p>
-                    <ul class="benefits-list">
-                        <li>✓ Acesso a todas as palestras e workshops</li>
-                        <li>✓ Certificado de participação</li>
-                        <li>✓ Networking com profissionais da área</li>
-                    </ul>
+                    
+                    <!-- Registration Type Tabs -->
+                    <div class="registration-tabs">
+                        <button class="registration-tab-btn active" data-type="student">
+                            🎓 Aluno(a) Barbosa
+                        </button>
+                        <button class="registration-tab-btn" data-type="visitor">
+                            👥 Visitante
+                        </button>
+                    </div>
+
+                    <div class="info-text">
+                        <div id="student-info">
+                            <p><strong>Para estudantes do Colégio Estadual Barbosa Ferraz:</strong></p>
+                            <p>Preencha os dados solicitados para garantir sua participação no evento.</p>
+                        </div>
+                        <div id="visitor-info" class="hidden">
+                            <p><strong>Para visitantes externos:</strong></p>
+                            <p>Estudantes de outras escolas, professores e profissionais são bem-vindos!</p>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="registration-form">
-                    <form class="form">
-                        <div class="form-group">
-                            <label for="name">Nome Completo</label>
-                            <input type="text" id="name" name="name" required>
+                    <!-- Student Form -->
+                    <form class="form" id="student-form">
+                        <div class="form-header">
+                            <h3>🎓 Inscrição - Aluno(a) Barbosa</h3>
+                            <p>Para estudantes do Colégio Estadual Barbosa Ferraz</p>
                         </div>
+
                         <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" name="email" required>
+                            <label for="student-name">Nome Completo</label>
+                            <input type="text" id="student-name" name="name" required>
                         </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="student-situation">Situação Atual</label>
+                                <select id="student-situation" name="situation" required>
+                                    <option value="">Selecione sua situação...</option>
+                                    <option value="estudante-ativo">Estudante Ativo</option>
+                                    <option value="formado">Ex-aluno (Formado)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="student-email">E-mail</label>
+                                <input type="email" id="student-email" name="email" required>
+                            </div>
+                        </div>
+
+                        <!-- Campos condicionais para estudantes ativos -->
+                        <div id="student-active-fields" class="conditional-fields hidden">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="student-series">Série</label>
+                                    <select id="student-series" name="series">
+                                        <option value="">Selecione...</option>
+                                        <option value="1ano">1º Ano</option>
+                                        <option value="2ano">2º Ano</option>
+                                        <option value="3ano">3º Ano</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="student-turma">Turma</label>
+                                    <select id="student-turma" name="turma">
+                                        <option value="">Selecione...</option>
+                                        <option value="A">Turma A</option>
+                                        <option value="B">Turma B</option>
+                                        <option value="C">Turma C</option>
+                                        <option value="D">Turma D</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Campos condicionais para ex-alunos -->
+                        <div id="student-graduate-fields" class="conditional-fields hidden">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="student-graduation-year">Ano de Formatura</label>
+                                    <input type="number" id="student-graduation-year" name="graduationYear" min="1960" max="2024" placeholder="Ex: 2020">
+                                </div>
+                                <div class="form-group">
+                                    <label for="student-current-activity">Atividade Atual</label>
+                                    <input type="text" id="student-current-activity" name="currentActivity" placeholder="Ex: Universitário, Trabalhando...">
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-group">
-                            <label for="school">Escola/Instituição</label>
-                            <input type="text" id="school" name="school" required>
+                            <label for="student-interests">Áreas de Interesse (opcional)</label>
+                            <input type="text" id="student-interests" name="interests" placeholder="Ex: Machine Learning, Robótica, Programação...">
                         </div>
+
+                        <button type="submit" class="btn-primary">🎓 Confirmar Inscrição - Aluno(a) Barbosa</button>
+                    </form>
+
+                    <!-- Visitor Form -->
+                    <form class="form hidden" id="visitor-form">
+                        <div class="form-header">
+                            <h3>👥 Inscrição - Visitante</h3>
+                            <p>Para estudantes de outras escolas, professores e interessados</p>
+                        </div>
+
                         <div class="form-group">
-                            <label for="level">Nível de Ensino</label>
-                            <select id="level" name="level" required>
-                                <option value="">Selecione...</option>
-                                <option value="fundamental">Ensino Fundamental</option>
-                                <option value="medio">Ensino Médio</option>
-                                <option value="superior">Ensino Superior</option>
-                                <option value="professor">Professor</option>
-                            </select>
+                            <label for="visitor-name">Nome Completo</label>
+                            <input type="text" id="visitor-name" name="name" required>
                         </div>
-                        <button type="submit" class="btn-primary">Inscrever-se Agora</button>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="visitor-cargo">Cargo/Situação</label>
+                                <select id="visitor-cargo" name="cargo" required>
+                                    <option value="">Selecione sua situação...</option>
+                                    <option value="estudante">Estudante</option>
+                                    <option value="professor">Professor</option>
+                                    <option value="profissional">Profissional Formado</option>
+                                    <option value="outros">Outros</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="visitor-email">E-mail</label>
+                                <input type="email" id="visitor-email" name="email" required>
+                            </div>
+                        </div>
+
+                        <!-- Campos condicionais para estudantes -->
+                        <div id="visitor-student-fields" class="conditional-fields hidden">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="visitor-school">Escola/Instituição</label>
+                                    <input type="text" id="visitor-school" name="school" placeholder="Nome da sua escola">
+                                </div>
+                                <div class="form-group">
+                                    <label for="visitor-series-level">Série/Nível</label>
+                                    <select id="visitor-series-level" name="seriesLevel">
+                                        <option value="">Selecione...</option>
+                                        <option value="fundamental">Ensino Fundamental</option>
+                                        <option value="medio">Ensino Médio</option>
+                                        <option value="superior">Ensino Superior</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Campos condicionais para professores -->
+                        <div id="visitor-teacher-fields" class="conditional-fields hidden">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="visitor-institution">Instituição de Ensino</label>
+                                    <input type="text" id="visitor-institution" name="institution" placeholder="Escola/Universidade onde leciona">
+                                </div>
+                                <div class="form-group">
+                                    <label for="visitor-subject">Disciplina/Área</label>
+                                    <input type="text" id="visitor-subject" name="subject" placeholder="Ex: Matemática, Informática...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Campos condicionais para profissionais -->
+                        <div id="visitor-professional-fields" class="conditional-fields hidden">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="visitor-company">Empresa/Organização</label>
+                                    <input type="text" id="visitor-company" name="company" placeholder="Onde trabalha atualmente">
+                                </div>
+                                <div class="form-group">
+                                    <label for="visitor-area">Área de Atuação</label>
+                                    <input type="text" id="visitor-area" name="area" placeholder="Ex: TI, Engenharia, Educação...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Campos condicionais para outros -->
+                        <div id="visitor-others-fields" class="conditional-fields hidden">
+                            <div class="form-group">
+                                <label for="visitor-description">Descreva sua situação</label>
+                                <input type="text" id="visitor-description" name="description" placeholder="Ex: Aposentado, Autônomo, Estudioso...">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="visitor-city">Cidade</label>
+                            <input type="text" id="visitor-city" name="city" placeholder="Sua cidade" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="visitor-interests">Áreas de Interesse (opcional)</label>
+                            <input type="text" id="visitor-interests" name="interests" placeholder="Ex: Machine Learning, Robótica, Programação...">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="visitor-expectations">O que você espera do evento? (opcional)</label>
+                            <input type="text" id="visitor-expectations" name="expectations" placeholder="Conte-nos suas expectativas...">
+                        </div>
+
+                        <button type="submit" class="btn-primary">👥 Confirmar Inscrição - Visitante</button>
                     </form>
                 </div>
             </div>
@@ -305,6 +471,86 @@
             });
         });
 
+        // Registration tabs
+        const registrationTabBtns = document.querySelectorAll('.registration-tab-btn');
+        const studentForm = document.getElementById('student-form');
+        const visitorForm = document.getElementById('visitor-form');
+        const studentInfo = document.getElementById('student-info');
+        const visitorInfo = document.getElementById('visitor-info');
+
+        registrationTabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const type = btn.getAttribute('data-type');
+        
+                // Remove active class from all tabs
+                registrationTabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+        
+                // Show/hide forms and info
+                if (type === 'student') {
+                    studentForm.classList.remove('hidden');
+                    visitorForm.classList.add('hidden');
+                    studentInfo.classList.remove('hidden');
+                    visitorInfo.classList.add('hidden');
+                } else {
+                    studentForm.classList.add('hidden');
+                    visitorForm.classList.remove('hidden');
+                    studentInfo.classList.add('hidden');
+                    visitorInfo.classList.remove('hidden');
+                }
+            });
+        });
+
+        // Conditional fields for student form
+        document.getElementById('student-situation').addEventListener('change', function() {
+            const situation = this.value;
+            const activeFields = document.getElementById('student-active-fields');
+            const graduateFields = document.getElementById('student-graduate-fields');
+        
+            // Hide all conditional fields first
+            activeFields.classList.add('hidden');
+            graduateFields.classList.add('hidden');
+        
+            // Show relevant fields based on situation
+            if (situation === 'estudante-ativo') {
+                activeFields.classList.remove('hidden');
+                // Make series and turma required
+                document.getElementById('student-series').required = true;
+                document.getElementById('student-turma').required = true;
+            } else if (situation === 'formado') {
+                graduateFields.classList.remove('hidden');
+                // Remove required from series and turma
+                document.getElementById('student-series').required = false;
+                document.getElementById('student-turma').required = false;
+            }
+        });
+
+        // Conditional fields for visitor form
+        document.getElementById('visitor-cargo').addEventListener('change', function() {
+            const cargo = this.value;
+            const studentFields = document.getElementById('visitor-student-fields');
+            const teacherFields = document.getElementById('visitor-teacher-fields');
+            const professionalFields = document.getElementById('visitor-professional-fields');
+            const othersFields = document.getElementById('visitor-others-fields');
+        
+            // Hide all conditional fields first
+            studentFields.classList.add('hidden');
+            teacherFields.classList.add('hidden');
+            professionalFields.classList.add('hidden');
+            othersFields.classList.add('hidden');
+        
+            // Show relevant fields based on cargo
+            if (cargo === 'estudante') {
+                studentFields.classList.remove('hidden');
+            } else if (cargo === 'professor') {
+                teacherFields.classList.remove('hidden');
+            } else if (cargo === 'profissional') {
+                professionalFields.classList.remove('hidden');
+            } else if (cargo === 'outros') {
+                othersFields.classList.remove('hidden');
+            }
+        });
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -319,10 +565,25 @@
             });
         });
 
-        // Form submission
-        document.querySelector('.form').addEventListener('submit', function(e) {
+        // Form submissions
+        document.getElementById('student-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Inscrição realizada com sucesso! Você receberá um e-mail de confirmação em breve.');
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            data.registrationType = 'Aluno(a) Barbosa';
+            
+            console.log('Dados da inscrição:', data);
+            alert('Inscrição realizada com sucesso como Aluno(a) Barbosa! Você receberá um e-mail de confirmação em breve.');
+        });
+
+        document.getElementById('visitor-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            data.registrationType = 'Visitante';
+            
+            console.log('Dados da inscrição:', data);
+            alert('Inscrição realizada com sucesso como Visitante! Você receberá um e-mail de confirmação em breve.');
         });
     </script>
 </body>
